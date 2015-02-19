@@ -10,7 +10,7 @@
 
 
 ### VARS
-forensic_image="/media/F3BB-E820/_UNENCRYPTED/2015-02-09_16-09-31_20dt507061/20150209_20dt507061.001"
+forensic_image=""
 
 date=$( date "+%Y_%m_%d_recover" )
 forensic_user=$( whoami  )
@@ -18,6 +18,10 @@ working_path="/media/forensik_hdd/"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/"
 recover_result_path="$result_path/$date/"
 types="exe"
+md5_output="recover_md5.txt"
+sha1_output="recover_sha1.txt"
+out_md5="$recover_result_path$md5_output"
+out_sha1="$recover_result_path$sha1_output"
 
 echo "##################################################"
 echo "###           RECOVER DELETED FILEiS           ###"
@@ -39,6 +43,13 @@ else
 ### RECOVER DELETED EXE FILES
 echo "--> Recovering deleted exe files from $forensic_image"
 foremost -v -i $forensic_image -t $types -o $recover_result_path
+
+### CALCULATE HASHES OF ALL RECOVERED FILES
+echo "--> Calculating hashes (MD5, SHA1) of all recoverd files."
+hashdeep -resbc md5 $recover_result_path >> $out_md5
+hashdeep -resbc sha1 $recover_result_path >> $out_sha1
+
+
 
 ### FINISHED
 echo "---> All operations finished. To access your results >> cd $hashes_result_path"
