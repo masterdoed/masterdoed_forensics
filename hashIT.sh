@@ -43,7 +43,7 @@ else
 
 ### GET ALL FILES
 echo "---> Getting all files >> $out_files"
-find $working_path -type f | grep -v "hyberfil.sys" >> $out_files
+find $working_path -type f | grep -v "hiberfil.sys" | grep -v "pagefile.sys" >> $out_files
 
 
 ### CALCULATE MD5 HASHES
