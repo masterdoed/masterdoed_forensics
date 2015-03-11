@@ -9,7 +9,7 @@
 
 
 ### VARS
-forensic_image=""
+forensic_image=$( cat image_file.txt )
 date=$( date "+%Y_%m_%d_infos" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
@@ -20,7 +20,7 @@ imgstat_info_out="$info_result_path/imgstat_info.txt"
 
 
 echo "##################################################"
-echo "###           RECOVER DELETED FILEiS           ###"
+echo "###           GETTING HDD INFOS	             ###"
 echo "##################################################"
 echo ""
 

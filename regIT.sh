@@ -12,7 +12,7 @@
 date=$( date "+%Y_%m_%d_registry" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
-regHive_config="WINDOWS/system32/config"
+regHive_config="Windows/System32/config"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user"
 registry_result_path="$result_path/$date"
 registry_ntuserdat_path="$registry_result_path/ntuser"
@@ -49,9 +49,10 @@ echo "---> Extracting ntuser.dat registry information."
 while read line
 	do 
 		line2=$( echo $line|sed -e "s/\/media\/forensik_hdd\///g" )
-		line3=$(echo $line2|sed -e "s/\//_/g" )
-		
-		/usr/local/bin/auto_rip.pl -n $line -r $registry_ntuserdat_path/$line3/
+		line3=$( echo $line2|sed -e "s/\//_/g" )
+		line4=$( echo $line3|sed -e "s/\\$/DOLLAR_/g" )
+	 	
+		/usr/local/bin/auto_rip.pl -n $line -r $registry_ntuserdat_path/$line4/
  
 done < $registry_ntuserdat_path/$reg_user_out
 

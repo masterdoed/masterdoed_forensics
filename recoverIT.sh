@@ -10,8 +10,7 @@
 
 
 ### VARS
-forensic_image=""
-
+forensic_image=$( cat image_file.txt )
 date=$( date "+%Y_%m_%d_recover" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
