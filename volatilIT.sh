@@ -128,8 +128,8 @@ echo "---> Using plugin iehistory"
 vol.py $profile iehistory -f $memory_image >> $volatility_result_path/iehistory.txt
 #echo "---> Using plugin imagecopy"
 #vol.py $profile imagecopy -f $memory_image >> $volatility_result_path/imagecopy.txt
-echo "---> Using plugin imageinfo"
-vol.py $profile imageinfo -f $memory_image >> $volatility_result_path/imageinfo.txt
+#echo "---> Using plugin imageinfo"
+#vol.py $profile imageinfo -f $memory_image >> $volatility_result_path/imageinfo.txt
 echo "---> Using plugin impscan"
 vol.py $profile impscan -f $memory_image >> $volatility_result_path/impscan.txt
 echo "---> Using plugin joblinks"
@@ -150,8 +150,8 @@ echo "---> Using plugin mbrparser"
 vol.py $profile mbrparser -f $memory_image >> $volatility_result_path/mbrparser.txt
 #echo "---> Using plugin memdump"
 #vol.py $profile memdump -f $memory_image >> $volatility_result_path/memdump.txt
-echo "---> Using plugin memmap"
-vol.py $profile memmap -f $memory_image >> $volatility_result_path/memmap.txt
+#echo "---> Using plugin memmap"
+#vol.py $profile memmap -f $memory_image >> $volatility_result_path/memmap.txt
 echo "---> Using plugin messagehooks"
 vol.py $profile messagehooks -f $memory_image >> $volatility_result_path/messagehooks.txt
 echo "---> Using plugin mftparser"
@@ -174,12 +174,12 @@ echo "---> Using plugin patcher"
 vol.py $profile patcher -f $memory_image >> $volatility_result_path/patcher.txt
 echo "---> Using plugin poolpeek"
 vol.py $profile poolpeek -f $memory_image >> $volatility_result_path/poolpeek.txt
-echo "---> Using plugin printkey"
-vol.py $profile printkey -f $memory_image >> $volatility_result_path/printkey.txt
+#echo "---> Using plugin printkey"
+#vol.py $profile printkey -f $memory_image >> $volatility_result_path/printkey.txt
 echo "---> Using plugin privs"
 vol.py $profile privs -f $memory_image >> $volatility_result_path/privs.txt
-echo "---> Using plugin procdump"
-vol.py $profile procdump -f $memory_image >> $volatility_result_path/procdump.txt
+#echo "---> Using plugin procdump"
+#vol.py $profile procdump -f $memory_image >> $volatility_result_path/procdump.txt
 echo "---> Using plugin pslist"
 vol.py $profile pslist -f $memory_image >> $volatility_result_path/pslist.txt
 echo "---> Using plugin psscan"
