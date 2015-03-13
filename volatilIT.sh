@@ -93,7 +93,7 @@ vol.py $profile envars -f $memory_image >> $volatility_result_path/envars.txt
 echo "---> Using plugin eventhooks"
 vol.py $profile eventhooks -f $memory_image >> $volatility_result_path/eventhooks.txt
 echo "---> Using plugin evtlogs"
-vol.py $profile evtlogs -f $memory_image >> $volatility_result_path/evtlogs.txt
+vol.py $profile evtlogs -f $memory_image --dump-dir $volatility_result_path/eventlogs
 echo "---> Using plugin filescan"
 vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
 echo "---> Using plugin gahti"
@@ -110,18 +110,18 @@ echo "---> Using plugin handles"
 vol.py $profile handles -f $memory_image >> $volatility_result_path/handles.txt
 #echo "---> Using plugin hashdump"
 #vol.py $profile hashdump -f $memory_image >> $volatility_result_path/hashdump.txt
-echo "---> Using plugin hibinfo"
-vol.py $profile hibinfo -f $memory_image >> $volatility_result_path/hibinfo.txt
+#echo "---> Using plugin hibinfo"
+#vol.py $profile hibinfo -f $memory_image >> $volatility_result_path/hibinfo.txt
 #echo "---> Using plugin hivedump"
 #vol.py $profile hivedump -f $memory_image >> $volatility_result_path/hivedump.txt
 echo "---> Using plugin hivelist"
 vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
 echo "---> Using plugin hivescan"
 vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
-echo "---> Using plugin hpakextract"
-vol.py $profile hpakextract -f $memory_image >> $volatility_result_path/hpakextract.txt
-echo "---> Using plugin hpakinfo"
-vol.py $profile hpakinfo -f $memory_image >> $volatility_result_path/hpakinfo.txt
+#echo "---> Using plugin hpakextract"
+#vol.py $profile hpakextract -f $memory_image >> $volatility_result_path/hpakextract.txt
+#echo "---> Using plugin hpakinfo"
+#vol.py $profile hpakinfo -f $memory_image >> $volatility_result_path/hpakinfo.txt
 echo "---> Using plugin idt"
 vol.py $profile idt -f $memory_image >> $volatility_result_path/idt.txt
 echo "---> Using plugin iehistory"
@@ -130,8 +130,8 @@ vol.py $profile iehistory -f $memory_image >> $volatility_result_path/iehistory.
 #vol.py $profile imagecopy -f $memory_image >> $volatility_result_path/imagecopy.txt
 #echo "---> Using plugin imageinfo"
 #vol.py $profile imageinfo -f $memory_image >> $volatility_result_path/imageinfo.txt
-echo "---> Using plugin impscan"
-vol.py $profile impscan -f $memory_image >> $volatility_result_path/impscan.txt
+#echo "---> Using plugin impscan"
+#vol.py $profile impscan -f $memory_image >> $volatility_result_path/impscan.txt
 echo "---> Using plugin joblinks"
 vol.py $profile joblinks -f $memory_image >> $volatility_result_path/joblinks.txt
 #echo "---> Using plugin kdbgscan"
@@ -142,8 +142,8 @@ echo "---> Using plugin ldrmodules"
 vol.py $profile ldrmodules -f $memory_image >> $volatility_result_path/ldrmodules.txt
 #echo "---> Using plugin lsadump"
 #vol.py $profile lsadump -f $memory_image >> $volatility_result_path/lsadump.txt
-echo "---> Using plugin machoinfo"
-vol.py $profile machoinfo -f $memory_image >> $volatility_result_path/machoinfo.txt
+#echo "---> Using plugin machoinfo"
+#vol.py $profile machoinfo -f $memory_image >> $volatility_result_path/machoinfo.txt
 echo "---> Using plugin malfind"
 vol.py $profile malfind -f $memory_image >> $volatility_result_path/malfind.txt
 echo "---> Using plugin mbrparser"
@@ -170,16 +170,16 @@ vol.py $profile mutantscan -f $memory_image >> $volatility_result_path/mutantsca
 #vol.py $profile notepad -f $memory_image >> $volatility_result_path/notepad.txt
 echo "---> Using plugin objtypescan"
 vol.py $profile objtypescan -f $memory_image >> $volatility_result_path/objtypescan.txt
-echo "---> Using plugin patcher"
-vol.py $profile patcher -f $memory_image >> $volatility_result_path/patcher.txt
-echo "---> Using plugin poolpeek"
-vol.py $profile poolpeek -f $memory_image >> $volatility_result_path/poolpeek.txt
+#echo "---> Using plugin patcher"
+#vol.py $profile patcher -f $memory_image >> $volatility_result_path/patcher.txt
+#echo "---> Using plugin poolpeek"
+#vol.py $profile poolpeek -f $memory_image >> $volatility_result_path/poolpeek.txt
 #echo "---> Using plugin printkey"
 #vol.py $profile printkey -f $memory_image >> $volatility_result_path/printkey.txt
 echo "---> Using plugin privs"
 vol.py $profile privs -f $memory_image >> $volatility_result_path/privs.txt
-#echo "---> Using plugin procdump"
-#vol.py $profile procdump -f $memory_image >> $volatility_result_path/procdump.txt
+echo "---> Using plugin procdump"
+vol.py $profile procdump -f $memory_image --dump-dir $volatility_result_path/procdump
 echo "---> Using plugin pslist"
 vol.py $profile pslist -f $memory_image >> $volatility_result_path/pslist.txt
 echo "---> Using plugin psscan"
@@ -191,21 +191,21 @@ vol.py $profile psxview -f $memory_image >> $volatility_result_path/psxview.txt
 #echo "---> Using plugin raw2dmp"
 #vol.py $profile raw2dmp -f $memory_image >> $volatility_result_path/raw2dmp.txt
 echo "---> Using plugin screenshot"
-vol.py $profile screenshot -f $memory_image >> $volatility_result_path/screenshot.txt
+vol.py $profile screenshot -f $memory_image --dump-dir $volatility_result_path/screenshot
 echo "---> Using plugin sessions"
 vol.py $profile sessions -f $memory_image >> $volatility_result_path/sessions.txt
 echo "---> Using plugin shellbags"
 vol.py $profile shellbags -f $memory_image >> $volatility_result_path/shellbags.txt
-echo "---> Using plugin shimcache"
-vol.py $profile shimcache -f $memory_image >> $volatility_result_path/shimcache.txt
+#echo "---> Using plugin shimcache"
+#vol.py $profile shimcache -f $memory_image >> $volatility_result_path/shimcache.txt
 echo "---> Using plugin sockets"
 vol.py $profile sockets -f $memory_image >> $volatility_result_path/sockets.txt
 echo "---> Using plugin sockscan"
 vol.py $profile sockscan -f $memory_image >> $volatility_result_path/sockscan.txt
 #echo "---> Using plugin ssdt"
 #vol.py $profile ssdt -f $memory_image >> $volatility_result_path/ssdt.txt
-echo "---> Using plugin strings"
-vol.py $profile strings -f $memory_image >> $volatility_result_path/strings.txt
+#echo "---> Using plugin strings"
+#vol.py $profile strings -f $memory_image >> $volatility_result_path/strings.txt
 echo "---> Using plugin svcscan"
 vol.py $profile svcscan -f $memory_image >> $volatility_result_path/svcscan.txt
 echo "---> Using plugin symlinkscan"
@@ -239,13 +239,13 @@ vol.py $profile vadtree -f $memory_image >> $volatility_result_path/vadtree.txt
 echo "---> Using plugin vadwalk"
 vol.py $profile vadwalk -f $memory_image >> $volatility_result_path/vadwalk.txt
 echo "---> Using plugin vboxinfo"
-vol.py $profile vboxinfo -f $memory_image >> $volatility_result_path/vboxinfo.txt
+#vol.py $profile vboxinfo -f $memory_image >> $volatility_result_path/vboxinfo.txt
 echo "---> Using plugin verinfo"
 vol.py $profile verinfo -f $memory_image >> $volatility_result_path/verinfo.txt
 #echo "---> Using plugin vmwareinfo"
 #vol.py $profile vmwareinfo -f $memory_image >> $volatility_result_path/vmwareinfo.txt
-echo "---> Using plugin volshell"
-vol.py $profile volshell -f $memory_image >> $volatility_result_path/volshell.txt
+#echo "---> Using plugin volshell"
+#vol.py $profile volshell -f $memory_image >> $volatility_result_path/volshell.txt
 echo "---> Using plugin windows"
 vol.py $profile windows -f $memory_image >> $volatility_result_path/windows.txt
 echo "---> Using plugin wintree"
