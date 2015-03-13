@@ -10,11 +10,14 @@
 
 
 ### VARS
+### VARS
 forensic_image=$( cat image_file.txt )
-date=$( date "+%Y_%m_%d_timeline" )
+memory_file=$(cat memory_file.txt)
+casename=$( cat casename.txt  )
+date=$( date "+%Y_%m_%d_bulk" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
-result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user"
+result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 timeline_result_path="$result_path/$date"
 timeline_file="$timeline_result_path/timeline.csv"
 target_os="win7"

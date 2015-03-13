@@ -8,12 +8,15 @@
 #This script will extract registry information
 
 
-### VARS
-date=$( date "+%Y_%m_%d_registry" )
+RS
+forensic_image=$( cat image_file.txt )
+memory_file=$(cat memory_file.txt)
+casename=$( cat casename.txt  )
+date=$( date "+%Y_%m_%d_bulk" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
+result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 regHive_config="Windows/System32/config"
-result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user"
 registry_result_path="$result_path/$date"
 registry_ntuserdat_path="$registry_result_path/ntuser"
 reg_user_out="registry_ntuserdat_files.txt"

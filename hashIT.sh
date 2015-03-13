@@ -11,10 +11,13 @@
 
 
 ### VARS
-date=$( date "+%Y_%m_%d_hashes" )
+forensic_image=$( cat image_file.txt )
+memory_file=$(cat memory_file.txt)
+casename=$( cat casename.txt  )
+date=$( date "+%Y_%m_%d_bulk" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
-result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/"
+result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 hashes_result_path="$result_path/$date/"
 files_output="all_files.txt"
 md5_output="all_files_md5.txt"
