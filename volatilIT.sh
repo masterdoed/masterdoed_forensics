@@ -93,7 +93,7 @@ vol.py $profile envars -f $memory_image >> $volatility_result_path/envars.txt
 echo "---> Using plugin eventhooks"
 vol.py $profile eventhooks -f $memory_image >> $volatility_result_path/eventhooks.txt
 echo "---> Using plugin evtlogs"
-vol.py $profile evtlogs -f $memory_image --dump-dir $volatility_result_path/eventlogs
+vol.py $profile evtlogs -f $memory_image --dump-dir $volatility_result_path
 echo "---> Using plugin filescan"
 vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
 echo "---> Using plugin gahti"
@@ -179,7 +179,7 @@ vol.py $profile objtypescan -f $memory_image >> $volatility_result_path/objtypes
 echo "---> Using plugin privs"
 vol.py $profile privs -f $memory_image >> $volatility_result_path/privs.txt
 echo "---> Using plugin procdump"
-vol.py $profile procdump -f $memory_image --dump-dir $volatility_result_path/procdump
+vol.py $profile procdump -f $memory_image --dump-dir $volatility_result_path
 echo "---> Using plugin pslist"
 vol.py $profile pslist -f $memory_image >> $volatility_result_path/pslist.txt
 echo "---> Using plugin psscan"
@@ -191,7 +191,7 @@ vol.py $profile psxview -f $memory_image >> $volatility_result_path/psxview.txt
 #echo "---> Using plugin raw2dmp"
 #vol.py $profile raw2dmp -f $memory_image >> $volatility_result_path/raw2dmp.txt
 echo "---> Using plugin screenshot"
-vol.py $profile screenshot -f $memory_image --dump-dir $volatility_result_path/screenshot
+vol.py $profile screenshot -f $memory_image --dump-dir $volatility_result_path
 echo "---> Using plugin sessions"
 vol.py $profile sessions -f $memory_image >> $volatility_result_path/sessions.txt
 echo "---> Using plugin shellbags"
