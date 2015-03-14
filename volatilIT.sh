@@ -10,7 +10,6 @@
 
 
 ### VARS
-### VARS
 forensic_image=$( cat image_file.txt )
 memory_image=$(cat memory_file.txt)
 casename=$( cat casename.txt  )
@@ -18,6 +17,7 @@ date=$( date "+%Y_%m_%d_volatility" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
 #result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
+result_temp="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/"
 result_path="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 volatility_result_path="$result_path/$date"
 profile="Win7SP1x64"
@@ -33,9 +33,13 @@ echo "---> Deleting today's files: $volatility_result_path"
 rm -rf $volatility_result_path
 
 ### CREATE RESULT PATH
+if [ ! -d $result_temp ]; then mkdir $result_temp; fi
 if [ ! -d $result_path ]; then mkdir $result_path; fi
 if [ ! -d $volatility_result_path ]; then mkdir $volatility_result_path; fi
 
+echo $profile
+echo $memory_image
+echo $volatility_result_path
 
 ### EXTRACTING INFORMATION WITH VOLATILITY
 #while read line;do echo "echo \"---> executing $line\""; vol.py -f \$memory_image --profile=\$profile $line >> \$volatility_result_path/$line.txt";done < test.txt 

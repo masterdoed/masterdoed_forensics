@@ -16,6 +16,7 @@ casename=$( cat casename.txt  )
 date=$( date "+%Y_%m_%d_bulk" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
+result_temp="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 bulk_result_path="$result_path/$date/"
 
@@ -30,6 +31,7 @@ echo "---> Deleting today's files: $bulk_result_path"
 rm -rf $bulk_result_path
 
 ### CREATE RESULT PATH
+if [ ! -d $result_temp ]; then mkdir $result_temp; fi
 if [ ! -d $result_path ]; then mkdir $result_path; fi
 if [ ! -d $bulk_result_path ]; then mkdir $bulk_result_path; fi
 

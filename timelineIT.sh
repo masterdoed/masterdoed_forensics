@@ -17,6 +17,7 @@ casename=$( cat casename.txt  )
 date=$( date "+%Y_%m_%d_timeline" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
+result_temp="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 timeline_result_path="$result_path/$date"
 timeline_file="$timeline_result_path/timeline.csv"
@@ -32,6 +33,7 @@ echo "---> Deleting today's files: $timeline_result_path"
 rm -rf $timeline_result_path
 
 ### CREATE RESULT PATH
+if [ ! -d $result_temp ]; then mkdir $result_temp; fi
 if [ ! -d $result_path ]; then mkdir $result_path; fi
 if [ ! -d $timeline_result_path ]; then mkdir $timeline_result_path; fi
 

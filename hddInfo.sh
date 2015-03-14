@@ -16,6 +16,7 @@ casename=$( cat casename.txt  )
 date=$( date "+%Y_%m_%d_hddinfo" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
+result_temp="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 info_result_path="$result_path/$date"
 mmls_info_out="$info_result_path/mmls_info.txt"
@@ -32,6 +33,7 @@ echo "---> Deleting today's files: $info_result_path"
 rm -rf $info_result_path
 
 ### CREATE RESULT PATH
+if [ ! -d $result_temp ]; then mkdir $result_temp; fi
 if [ ! -d $result_path ]; then mkdir $result_path; fi
 if [ ! -d $info_result_path ]; then mkdir $info_result_path; fi
 
