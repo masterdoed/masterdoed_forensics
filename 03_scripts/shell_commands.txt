@@ -1,0 +1,9 @@
+#search for virustotal hits in cuckoo:
+for i in $(find -type f -name "report.html");do echo "START############################"; grep -A 10 "VirusTotal" $i;echo "--> $i";echo "END###########################";done
+
+cat strings_image.unicode | egrep -Eo 'https?://.+?\s' >>
+
+grep -ilrPoh 'https?://.+?\s'
+
+ cat  20NB188233_extracted_http.txt | cut -d " " -f 1 | sort -n | uniq >> 20NB188233_extracted_http_uniq.txt 
+

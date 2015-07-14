@@ -17,7 +17,7 @@ casename=$( cat casename.txt  )
 date=$( date "+%Y_%m_%d_timeline" )
 forensic_user=$( whoami  )
 working_path="/media/forensik_hdd/"
-result_temp="/Users/$forensic_user/Desktop/forensics_results_$forensic_user/"
+result_temp="/home/$forensic_user/Desktop/forensics_results_$forensic_user/"
 result_path="/home/$forensic_user/Desktop/forensics_results_$forensic_user/$casename"
 timeline_result_path="$result_path/$date"
 timeline_file="$timeline_result_path/timeline.csv"
@@ -43,7 +43,8 @@ else
 
 ### CREATE TIMELINE
 echo "---> Gathering information with timeline toolset..."
-log2timeline -v -p -f $target_os -r -z local $working_path -m C_ -w $timeline_file
+#log2timeline.py -v -p -f $target_os -r -z local $working_path -m C_ -w $timeline_file
+log2timeline.py  $timeline_file $forensic_image
 
 ### FINISHED
 echo "---> All operations finished. To access your results >> cd $timeline_result_path"
