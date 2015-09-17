@@ -158,15 +158,15 @@ vol.py $profile handles -f $memory_image >> $volatility_result_path/handles.txt
 #echo "---> Using plugin hibinfo"
 #vol.py $profile hibinfo -f $memory_image >> $volatility_result_path/hibinfo.txt
 
-#echo "---> Using plugin hivedump"
-#mkdir $volatility_result_path/hivedump
-#vol.py $profile hivedump -f $memory_image --dump-dir $volatility_result_path/hivedump >> $volatility_result_path/hivedump.txt
+echo "---> Using plugin hivedump"
+mkdir $volatility_result_path/hivedump
+vol.py $profile hivedump -f $memory_image --dump-dir $volatility_result_path/hivedump >> $volatility_result_path/hivedump.txt
 
-echo "---> Using plugin hivelist"
-vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
+#echo "---> Using plugin hivelist"
+#vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
 
-echo "---> Using plugin hivescan"
-vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
+#echo "---> Using plugin hivescan"
+#vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
 
 #echo "---> Using plugin hpakextract"
 #vol.py $profile hpakextract -f $memory_image >> $volatility_result_path/hpakextract.txt
@@ -315,7 +315,7 @@ echo "---> Using plugin threads"
 vol.py $profile threads -f $memory_image >> $volatility_result_path/threads.txt
 
 echo "---> Using plugin timeliner"
-vol.py $profile timeliner -f $memory_image >> $volatility_result_path/timeliner.txt
+vol.py $profile timeliner -f $memory_image --ouput-file timeliner.csv >> $volatility_result_path/timeliner.txt
 
 #echo "---> Using plugin timers"
 #vol.py $profile timers -f $memory_image >> $volatility_result_path/timers.txt
