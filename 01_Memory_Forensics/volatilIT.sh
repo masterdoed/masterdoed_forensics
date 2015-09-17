@@ -16,7 +16,7 @@ profile="--profile=Win7SP1x64"
 working_path="/home/doed/Desktop/"
 ###########################################################
 
-forensic_image=$( cat image_file.txt )
+#forensic_image=$( cat image_file.txt )
 memory_image=$(cat memory_file.txt)
 casename=$( cat casename.txt  )
 date=$( date "+%Y_%m_%d_volatility" )
@@ -131,8 +131,8 @@ vol.py $profile envars -f $memory_image >> $volatility_result_path/envars.txt
 #echo "---> Using plugin evtlogs"
 #vol.py $profile evtlogs -f $memory_image --dump-dir $volatility_result_path
 
-echo "---> Using plugin filescan"
-vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
+#echo "---> Using plugin filescan"
+#vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
 
 #echo "---> Using plugin gahti"
 #vol.py $profile gahti -f $memory_image >> $volatility_result_path/gahti.txt
@@ -198,8 +198,8 @@ vol.py $profile iehistory -f $memory_image >> $volatility_result_path/iehistory.
 #echo "---> Using plugin kpcrscan"
 #vol.py $profile kpcrscan -f $memory_image >> $volatility_result_path/kpcrscan.txt
 
-#echo "---> Using plugin ldrmodules"
-#vol.py $profile ldrmodules -f $memory_image >> $volatility_result_path/ldrmodules.txt
+echo "---> Using plugin ldrmodules"
+vol.py $profile ldrmodules -f $memory_image >> $volatility_result_path/ldrmodules.txt
 
 #echo "---> Using plugin lsadump"
 #vol.py $profile lsadump -f $memory_image >> $volatility_result_path/lsadump.txt
