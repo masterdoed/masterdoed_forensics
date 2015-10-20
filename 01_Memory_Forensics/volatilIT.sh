@@ -13,7 +13,7 @@
 
 ############# NEEDS TO BE MODIFIED BY USER ################
 profile="--profile=Win7SP1x64"
-working_path="/home/doed/Desktop/"
+working_path="/Users/doed/Downloads/Challenge/"
 ###########################################################
 
 #forensic_image=$( cat image_file.txt )
@@ -373,6 +373,10 @@ vol.py $profile verinfo -f $memory_image >> $volatility_result_path/verinfo.txt
 
 #echo "---> Using plugin yarascan"
 #vol.py $profile yarascan -f $memory_image >> $volatility_result_path/yarascan.txt
+
+echo "---> Creating PSTOTAL Graph"
+vol.py $profile pstotal --output=dot --output-file=$volatility_result_path/pstotal.dot
+dot -Tpng $volatility_result_path/pstotal.dot > $colatility_result_path/pstotal.png
 
 ###########################################################
 
