@@ -131,8 +131,8 @@ vol.py $profile envars -f $memory_image >> $volatility_result_path/envars.txt
 #echo "---> Using plugin evtlogs"
 #vol.py $profile evtlogs -f $memory_image --dump-dir $volatility_result_path
 
-#echo "---> Using plugin filescan"
-#vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
+echo "---> Using plugin filescan"
+vol.py $profile filescan -f $memory_image >> $volatility_result_path/filescan.txt
 
 #echo "---> Using plugin gahti"
 #vol.py $profile gahti -f $memory_image >> $volatility_result_path/gahti.txt
@@ -287,8 +287,8 @@ vol.py $profile sessions -f $memory_image >> $volatility_result_path/sessions.tx
 echo "---> Using plugin shellbags"
 vol.py $profile shellbags -f $memory_image >> $volatility_result_path/shellbags.txt
 
-#echo "---> Using plugin shimcache"
-#vol.py $profile shimcache -f $memory_image >> $volatility_result_path/shimcache.txt
+echo "---> Using plugin shimcache"
+vol.py $profile shimcache -f $memory_image >> $volatility_result_path/shimcache.txt
 
 echo "---> Using plugin sockets"
 vol.py $profile sockets -f $memory_image >> $volatility_result_path/sockets.txt
@@ -341,11 +341,11 @@ vol.py $profile userhandles -f $memory_image >> $volatility_result_path/userhand
 #echo "---> Using plugin vaddump"
 #vol.py $profile vaddump -f $memory_image >> $volatility_result_path/vaddump.txt
 
-#echo "---> Using plugin vadinfo"
-#vol.py $profile vadinfo -f $memory_image >> $volatility_result_path/vadinfo.txt
+echo "---> Using plugin vadinfo"
+vol.py $profile vadinfo -f $memory_image >> $volatility_result_path/vadinfo.txt
 
-echo "---> Using plugin vadtree"
-vol.py $profile vadtree -f $memory_image >> $volatility_result_path/vadtree.txt
+#echo "---> Using plugin vadtree"
+#vol.py $profile vadtree -f $memory_image >> $volatility_result_path/vadtree.txt
 
 #echo "---> Using plugin vadwalk"
 #vol.py $profile vadwalk -f $memory_image >> $volatility_result_path/vadwalk.txt
