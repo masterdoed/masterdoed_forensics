@@ -3,7 +3,6 @@
 import sys, os, time, subprocess, ConfigParser, io
 
 menu_actions = {}
-selectedMode = ""
 
 config = ConfigParser.ConfigParser()
 config.read('dmaf_config.cfg')
@@ -194,7 +193,8 @@ def exit():
 def imageInfo ():
 	createCase ("ImageInfo")
 
-	os.system ( "vol.py -f " + config.get('MEMORY','MEMORY_FILE')  + " imageinfo"  )
+	os.system ( "vol.py -f " + config.get('MEMORY','MEMORY_FILE')  + " imageinfo >> " + config.get('MEMORY','OUTPUT_PATH').strip('"')  + "/ImageInfo.txt" )
+
 
 	return
 
@@ -237,8 +237,14 @@ def createCase (mode):
 	selectedMode = mode
 	
 	datetime = time.strftime("%Y%m%d_%H%M_")
-	caseOutput = dmaf_config.OUTPUT_PATH + datetime + dmaf_config.CASENAME + "_" + mode
 
+	try:
+    		os.stat(config.get('MEMORY','OUTPUT_PATH').strip('"'))
+	except:
+    		os.mkdir(config.get('MEMORY','OUTPUT_PATH').strip('"')) 
+	
+	caseOutput = config.get('MEMORY','OUTPUT_PATH').strip('"') + datetime + config.get('MEMORY','CASENAME').strip('"') + "_" + mode
+	
 	print "\n\nOutput can be found at: " + caseOutput + "\n\n"
 
 	return
