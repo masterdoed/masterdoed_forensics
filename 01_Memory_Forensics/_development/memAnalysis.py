@@ -1,12 +1,16 @@
 #!/usr/bin/python
 
-import sys, os, time, subprocess, ConfigParser, io
+import sys, os, time, subprocess, ConfigParser, io, shutil
 
 menu_actions = {}
 
-config = ConfigParser.ConfigParser()
-config.read('dmaf_config.cfg')
+cfgFile = "dmaf_config.cfg"
+config = ConfigParser.RawConfigParser()
+config.read(cfgFile)
 
+quickList = ['psxview','dlllist', 'ldrmodules', 'hivelist' ,'cmdscan', 'netscan',  'sockets', 'sockscan' , 'malfind', 'mutantscan']
+fullList = []
+timelineList = []
 
 # Main menu
 def main_menu():
@@ -22,14 +26,16 @@ def main_menu():
 	print ".########..##.....##.##.....##.##......"
  	print "\n"
     	print "Welcome to Doeds Memory Analysis Framework\n"
-    	print "Please choose your analysis mode: "
+    	print "Please choose your analysis mode: \n"
     	print "     1. Memory Image Info"
-	print "     2. Set KDBG"
-	print "     3. Quick Analysis"
-    	print "     4. Full Analysis"
+	print "     2. Set KDBG -> will improve performance"
+	print "     3. Quick Analysis (basic plugins only -> fast)"
+    	print "     4. Full Analysis (structured analysis + carving -> slow)"
     	print "     5. Timeline Analysis"
+	print "     6. TBD: Strings"
+	print "     7. TBD: IOC scan"
 	print "     ..."
-	print "     8. Settings"
+	print "     99. Settings"
     	print "\n     0. Quit"
     	
 	choice = raw_input(" >>  ")
@@ -85,6 +91,12 @@ def menu2():
 # Menu3 - Quick Analysis
 def menu3():
     	print "3. Quick Memory Analysis\n"
+	print "During this analysis the following plugins will be evoked:"
+	
+	for plugin in quickList:
+		print plugin
+	
+	print "\n\n"
 	print "     31. Start Quick Memory Analysis"	
 	print "     9. Back"
     	print "     0. Quit"
@@ -95,13 +107,14 @@ def menu3():
 	return
 
 def menu31():
-	print "Doing Quick Memory Analysis...TBD"
+	print "Doing Quick Memory Analysis...\n"
 	
 	quickAnalysis()
 	
 	print "\n\nAll operations done ...\n\n"
-        print "9. Back"
-        
+        print "     9. Back"
+	print "     0. Quit"        
+
         choice = raw_input(" >> ")
         exec_menu(choice)
 
@@ -125,7 +138,8 @@ def menu41():
 	fullAnalysis()
 	
 	print "\n\nAll operations done ...\n\n"
-        print "9. Back"
+        print "     9. Back"
+	print "     0. Quit"
         
         choice = raw_input(" >> ")
         exec_menu(choice)
@@ -151,16 +165,17 @@ def menu51():
 	timeLine()
 
 	print "\n\nAll operations done ...\n\n"
-	print "9. Back"
+	print "     9. Back"
+	print "     0. Quit"	
 	
 	choice = raw_input(" >> ")
 	exec_menu(choice)
 
 	return
 
-# Menu8 - Settings
-def menu8():
-        print "8. Settings\n"
+# Menu99 - Settings
+def menu99():
+        print "99. Settings\n"
         
 	for name, value in config.items('MEMORY'):
         	print '  %s = %s' % (name, value)	
@@ -187,7 +202,9 @@ def back():
  
 # Menu - Exit 
 def exit():
-    	sys.exit()
+	with open(cfgFile, 'wb') as configfile:
+    		config.write(configfile)
+	sys.exit()
 
 # Do Memory Image Info
 def imageInfo ():
@@ -210,8 +227,14 @@ def setKDBG ():
 
 # Do Quick Analysis
 def quickAnalysis ():
-	createCase ("QuickAnalysis")
-	
+
+	for plugin in quickList:
+		cmd = "vol.py --profile=" + config.get('MEMORY','PROFILE').strip('"')  + " -f " + config.get('MEMORY','MEMORY_FILE').strip('"') + " " + plugin + " -g " + config.get('MEMORY', 'KDBG').strip('"') + " > " + createCase ("QuickAnalysis") + "/" + plugin + ".txt"
+		print "\n" + cmd + "\n"
+		os.system ( cmd )
+		
+	print "\n\nOutput can be found at:  " + config.get('MEMORY','OUTPUT_PATH').strip('"') 	
+
 	time.sleep (5)
 
 	return
@@ -236,18 +259,20 @@ def createCase (mode):
 
 	selectedMode = mode
 	
-	datetime = time.strftime("%Y%m%d_%H%M_")
+	datetime = time.strftime("%Y%m%d_")
+	
+	caseDate = datetime + config.get('MEMORY','CASENAME').strip('"') + "_" + mode
+		
+	caseOutput = config.get('MEMORY','OUTPUT_PATH').strip('"') + caseDate
 
 	try:
-    		os.stat(config.get('MEMORY','OUTPUT_PATH').strip('"'))
+    		os.stat(caseOutput)
 	except:
-    		os.mkdir(config.get('MEMORY','OUTPUT_PATH').strip('"')) 
+    		os.makedirs(caseOutput) 
 	
-	caseOutput = config.get('MEMORY','OUTPUT_PATH').strip('"') + datetime + config.get('MEMORY','CASENAME').strip('"') + "_" + mode
-	
-	print "\n\nOutput can be found at: " + caseOutput + "\n\n"
+	#print "\n\nOutput can be found at: " + caseOutput + "\n\n"
 
-	return
+	return caseOutput
 
 
 # Menu definitions
@@ -261,7 +286,7 @@ menu_actions = {
 	'41': menu41,
 	'5': menu5,
 	'51': menu51,
-	'8': menu8,
+	'99': menu99,
         '9': back,
         '0': exit,
 }
@@ -271,4 +296,4 @@ menu_actions = {
 if __name__ == "__main__":
 	main_menu()
 
-
+		
