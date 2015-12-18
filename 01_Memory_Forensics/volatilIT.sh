@@ -13,7 +13,10 @@
 
 ############# NEEDS TO BE MODIFIED BY USER ################
 profile="--profile=Win7SP1x64"
-working_path="/Users/doed/Downloads/Challenge/"
+#working_path="/Users/doed/Downloads/Challenge/"
+
+working_path="/media/doed/diskAshur/00_INCIDENTS/"
+
 ###########################################################
 
 #forensic_image=$( cat image_file.txt )
@@ -165,8 +168,8 @@ vol.py $profile hivedump -f $memory_image --dump-dir $volatility_result_path/hiv
 #echo "---> Using plugin hivelist"
 #vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
 
-#echo "---> Using plugin hivescan"
-#vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
+echo "---> Using plugin hivescan"
+vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
 
 #echo "---> Using plugin hpakextract"
 #vol.py $profile hpakextract -f $memory_image >> $volatility_result_path/hpakextract.txt
@@ -263,11 +266,11 @@ echo "---> Using plugin procdump"
 mkdir $volatility_result_path/procdump
 vol.py $profile procdump -f $memory_image --dump-dir $volatility_result_path/procdump >> $volatility_result_path/procdump.txt
 
-echo "---> Using plugin pslist"
-vol.py $profile pslist -f $memory_image >> $volatility_result_path/pslist.txt
+#echo "---> Using plugin pslist"
+#vol.py $profile pslist -f $memory_image >> $volatility_result_path/pslist.txt
 
-echo "---> Using plugin psscan"
-vol.py $profile psscan -f $memory_image >> $volatility_result_path/psscan.txt
+#echo "---> Using plugin psscan"
+#vol.py $profile psscan -f $memory_image >> $volatility_result_path/psscan.txt
 
 echo "---> Using plugin pstree"
 vol.py $profile pstree -f $memory_image >> $volatility_result_path/pstree.txt
