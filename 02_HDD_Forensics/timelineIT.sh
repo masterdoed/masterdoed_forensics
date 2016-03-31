@@ -43,8 +43,7 @@ else
 
 ### CREATE TIMELINE
 echo "---> Gathering information with timeline toolset..."
-#log2timeline.py -v -p -f $target_os -r -z local $working_path -m C_ -w $timeline_file
-log2timeline.py  $timeline_file $forensic_image
+log2timeline.py $timeline_file $forensic_image
 
 ### FINISHED
 echo "---> All operations finished. To access your results >> cd $timeline_result_path"

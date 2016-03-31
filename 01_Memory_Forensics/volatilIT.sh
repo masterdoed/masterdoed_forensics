@@ -12,10 +12,12 @@
 ### VARS
 
 ############# NEEDS TO BE MODIFIED BY USER ################
-profile="--profile=Win7SP1x64"
+#profile="--profile=Win7SP1x64"
+profile="--profile=WinXPSP2x86"
+
 #working_path="/Users/doed/Downloads/Challenge/"
 
-working_path="/media/doed/diskAshur/00_INCIDENTS/"
+working_path="/media/doed/diskAshur/00_Inicdents/2016_03_LEGACY/"
 
 ###########################################################
 
@@ -161,12 +163,12 @@ vol.py $profile handles -f $memory_image >> $volatility_result_path/handles.txt
 #echo "---> Using plugin hibinfo"
 #vol.py $profile hibinfo -f $memory_image >> $volatility_result_path/hibinfo.txt
 
-echo "---> Using plugin hivedump"
-mkdir $volatility_result_path/hivedump
-vol.py $profile hivedump -f $memory_image --dump-dir $volatility_result_path/hivedump >> $volatility_result_path/hivedump.txt
+#echo "---> Using plugin hivedump"
+#mkdir $volatility_result_path/hivedump
+#vol.py $profile hivedump -f $memory_image --dump-dir $volatility_result_path/hivedump >> $volatility_result_path/hivedump.txt
 
-#echo "---> Using plugin hivelist"
-#vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
+echo "---> Using plugin hivelist"
+vol.py $profile hivelist -f $memory_image >> $volatility_result_path/hivelist.txt
 
 echo "---> Using plugin hivescan"
 vol.py $profile hivescan -f $memory_image >> $volatility_result_path/hivescan.txt
@@ -227,7 +229,7 @@ vol.py $profile mbrparser -f $memory_image >> $volatility_result_path/mbrparser.
 #vol.py $profile messagehooks -f $memory_image >> $volatility_result_path/messagehooks.txt
 
 echo "---> Using plugin mftparser"
-vol.py $profile mftparser -f $memory_image --output=body --output-file=mft.csv >> $volatility_result_path/mftparser.txt
+vol.py $profile mftparser -f $memory_image --output=body --output-file=$volatility_result_path/mft.csv >> $volatility_result_path/mftparser.txt
 
 #echo "---> Using plugin moddump"
 #vol.py $profile moddump -f $memory_image >> $volatility_result_path/moddump.txt
@@ -318,7 +320,7 @@ echo "---> Using plugin threads"
 vol.py $profile threads -f $memory_image >> $volatility_result_path/threads.txt
 
 echo "---> Using plugin timeliner"
-vol.py $profile timeliner -f $memory_image --ouput-file timeliner.csv >> $volatility_result_path/timeliner.txt
+vol.py $profile timeliner -f $memory_image --output-file $volatility_result_path/timeliner.csv >> $volatility_result_path/timeliner.txt
 
 #echo "---> Using plugin timers"
 #vol.py $profile timers -f $memory_image >> $volatility_result_path/timers.txt
