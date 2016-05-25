@@ -17,7 +17,7 @@ profile="--profile=WinXPSP2x86"
 
 #working_path="/Users/doed/Downloads/Challenge/"
 
-working_path="/media/doed/diskAshur/00_Inicdents/2016_03_LEGACY/"
+working_path="/home/doed/Desktop/Analysis/00_Incidents/2016_05_WasNDasN/ForensicResults/MemoryAnalysis"
 
 ###########################################################
 
