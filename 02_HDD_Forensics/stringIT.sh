@@ -42,7 +42,7 @@ else
 
 ### EXTRACTING STRINGS
 echo "---> Gathering information with strings..."
-strings -td -el $forensic_image >> $strings_result_file 
+strings -a -o $forensic_image >> $strings_result_file 
 
 ### FINISHED
 echo "---> All operations finished. To access your results >> cd $strings_result_path"
