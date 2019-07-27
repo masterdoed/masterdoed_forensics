@@ -11,7 +11,7 @@ ntfs_offset=2048
 
 ### INPUT ###
 #raw_image=$1
-raw_image="RAW_IMAGE_FILE"
+raw_image="RAW_IMAGE_FILE
 
 ### OUTPUT ###
 #output_path=$2
@@ -45,21 +45,21 @@ echo ""
 
 ### ANTIVIRUS SCAN ###
 echo "### ANTI VIRUS SCAN ###"
-#clamscan -ir $mount_path >> $output_path"clamscan_out.txt"
+clamscan -ir $mount_path >> $output_path"clamscan_out.txt"
 echo "-----> OUTPUT: AV Scan Out written: " $output_path"clams$output_path"pagefile_strings_analysis_IOCfull.txt"can_out.txt"
 echo ""
 
 ### COPY REGISTRY ###
 echo "### COPY REGISTRY ###"
-#mkdir $output_path"Registry"
-#cp -R $mount_path"/Windows/System32/config/" $output_path"Registry/"
+mkdir $output_path"Registry"
+cp -R $mount_path"/Windows/System32/config/" $output_path"Registry/"
 echo "-----> OUTPUT: Registry copied: " $output_path"Registry/"
 echo ""
 
 ### COPY WIN LOGS ###
 echo "### COPY WIN LOGS ###"
-#mkdir $output_path"WinLogs"
-#cp -R $mount_path"/Windows/System32/winevt/Logs/" $output_path"WinLogs/"
+mkdir $output_path"WinLogs"
+cp -R $mount_path"/Windows/System32/winevt/Logs/" $output_path"WinLogs/"
 echo "-----> OUTPUT: WinLogs copied: " $output_path"WinLogs/"
 echo ""
 
@@ -71,26 +71,26 @@ echo ""
 
 ### STRINGS EXTRACTION PAGEFILE.SYS ###
 echo "### STRINGS EXTRACTION PAGEFILE.SYS ###"
-#strings -a -o  $mount_path"/pagefile.sys" > $output_path"pagefile_strings.txt"
+strings -a -o  $mount_path"/pagefile.sys" > $output_path"pagefile_strings.txt"
 echo "-----> OUTPUT: pagefile strings written: " $output_path"$output_path"pagefile_strings_analysis_IOCfull.txt"pagefile_strings.txt"
 echo ""
 
 ### STRINGS EXTRACTION HIBERFIL.SYS ###
 echo "### STRINGS EXTRACTION HIBERFIL.SYS ###"
-#strings -a -o  $mount_path"/hiberfil.sys" > $output_path"hyberfil_strings.txt"
+strings -a -o  $mount_path"/hiberfil.sys" > $output_path"hyberfil_strings.txt"
 echo "-----> OUTPUT: hiberfil strings written: " $output_path"hyberfil_strings.txt"
 echo ""
 
 ### STRINGS EXTRACTION RAW IMAGE ###
 echo "### STRINGS EXTRACTION RAW IMAGE ###"
-#strings -a -o  $raw_image > $output_path"raw_image_strings.txt"
+strings -a -o  $raw_image > $output_path"raw_image_strings.txt"
 echo "-----> OUTPUT: raw image strings written: " $output_path"raw_image_strings.txt"
 echo ""
 
 ### MFT EXTRACTION###
 echo "### MFT EXTRACTION ###"
-#icat -o $ntfs_offset $raw_image 0 > $output_path"MFT.raw"
-#analyzeMFT.py -e -f $output_path"MFT.raw" -o $output_path"MFT.csv"
+icat -o $ntfs_offset $raw_image 0 > $output_path"MFT.raw"
+analyzeMFT.py -e -f $output_path"MFT.raw" -o $output_path"MFT.csv"
 echo "-----> OUTPUT: MFT written: " $output_path"MFT.raw"
 echo "-----> OUTPUT: MFT written: " $output_path"MFT.csv"
 echo ""
@@ -99,14 +99,14 @@ echo ""
 echo "##########################################################################"
 echo ""
 echo "### PAGEFILE ANALYSIS ###"
-#grep -i "^https?://"  $output_path"pagefile_strings.txt" | sort | uniq > $output_path"pagefile_strings_analysis_urls.txt"
-#grep -i "^[a-z]:\\\\" $output_path"pagefile_strings.txt" | sort | uniq > $output_path"pagefile_strings_analysis_paths.txt"
-#grep -iFf $ioc_full $output_path"pagefile_strings.txt" > $output_path"pagefile_strings_analysis_IOCfull.txt"
-#grep -iFf $ioc_simple $output_path"pagefile_strings.txt" > $output_path"pagefile_strings_analysis_IOCsimple.txt"
+grep -i "^https?://"  $output_path"pagefile_strings.txt" | sort | uniq > $output_path"pagefile_strings_analysis_urls.txt"
+grep -i "^[a-z]:\\\\" $output_path"pagefile_strings.txt" | sort | uniq > $output_path"pagefile_strings_analysis_paths.txt"
+grep -iFf $ioc_full $output_path"pagefile_strings.txt" > $output_path"pagefile_strings_analysis_IOCfull.txt"
+grep -iFf $ioc_simple $output_path"pagefile_strings.txt" > $output_path"pagefile_strings_analysis_IOCsimple.txt"
 echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_urls.txt"
 echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_paths.txt"
-#echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_IOCsimple.txt"
-#echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_IOCfull.txt"
+echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_IOCsimple.txt"
+echo "-----> OUTPUT: Pagefile analysis written: " $output_path"pagefile_strings_analysis_IOCfull.txt"
 echo ""
 
 echo "### FENRIR IOC ANALYSIS ###"
