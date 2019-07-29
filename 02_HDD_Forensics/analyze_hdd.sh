@@ -74,7 +74,7 @@ echo ""
 
 ### CONVERT HIBERFIL.SYS ###
 echo "### CONVERT HIBERFIL.SYS ###"
-python $vol_bin --profile=$vol_profile -f $mount_path"/hiberfil.sys" -o $output_path"hiberfil.raw"
+python $vol_bin imagecopy --profile=$vol_profile -f $mount_path"/hiberfil.sys" -o $output_path"hiberfil.raw"
 echo "-----> OUTPUT: hiberfil memdump written: " $output_path"hiberfil_raw"
 echo ""
 
