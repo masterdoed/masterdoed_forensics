@@ -11,7 +11,7 @@ ntfs_offset=2048
 
 ### INPUT ###
 #raw_image=$1
-raw_image="RAW_IMAGE_FILE
+raw_image="/home/masterdoed/Desktop/EVIDENCES/ffwsql03/ffwsql03_clone/ffwsql03_clone-flat.vmdk"
 
 ### OUTPUT ###
 #output_path=$2
@@ -46,7 +46,7 @@ echo ""
 ### ANTIVIRUS SCAN ###
 echo "### ANTI VIRUS SCAN ###"
 clamscan -ir $mount_path >> $output_path"clamscan_out.txt"
-echo "-----> OUTPUT: AV Scan Out written: " $output_path"clams$output_path"pagefile_strings_analysis_IOCfull.txt"can_out.txt"
+echo "-----> OUTPUT: AV Scan Out written: " $output_path"clamscan_out.txt"
 echo ""
 
 ### COPY REGISTRY ###
@@ -65,20 +65,20 @@ echo ""
 
 ### CALCULATE MD5 OF FILES ###
 echo "### CALCULATE MD5 OF FILES ###"
-#find $mount_path -type f -exec md5sum "{}" + > $output_path"md5s.txt"
+find $mount_path -type f -exec md5sum "{}" + > $output_path"md5s.txt"
 echo "-----> OUTPUT: MD5 written: " $output_path"md5.txt"
 echo ""
 
 ### STRINGS EXTRACTION PAGEFILE.SYS ###
 echo "### STRINGS EXTRACTION PAGEFILE.SYS ###"
 strings -a -o  $mount_path"/pagefile.sys" > $output_path"pagefile_strings.txt"
-echo "-----> OUTPUT: pagefile strings written: " $output_path"$output_path"pagefile_strings_analysis_IOCfull.txt"pagefile_strings.txt"
+echo "-----> OUTPUT: pagefile strings written: " $output_path"pagefile_strings.txt"
 echo ""
 
 ### STRINGS EXTRACTION HIBERFIL.SYS ###
 echo "### STRINGS EXTRACTION HIBERFIL.SYS ###"
-strings -a -o  $mount_path"/hiberfil.sys" > $output_path"hyberfil_strings.txt"
-echo "-----> OUTPUT: hiberfil strings written: " $output_path"hyberfil_strings.txt"
+strings -a -o  $mount_path"/hiberfil.sys" > $output_path"hiberfil_strings.txt"
+echo "-----> OUTPUT: hiberfil strings written: " $output_path"hiberfil_strings.txt"
 echo ""
 
 ### STRINGS EXTRACTION RAW IMAGE ###
