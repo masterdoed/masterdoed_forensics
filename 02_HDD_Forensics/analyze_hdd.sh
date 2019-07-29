@@ -27,6 +27,9 @@ ioc_simple="/home/masterdoed/Desktop/IOC/ioc_simple.txt"
 ### FENRIR ###
 fenrir="/home/masterdoed/Desktop/doed_GIT/Fenrir/"
 
+### VOLATILITY ###
+vol_bin="/home/masterdoed/Desktop/doed_GIT/volatility-master/vol.py"
+vol_profile="Win2008SP2x64"
 
 ### IMAGE MOUNTING ###
 echo "### IMAGE MOUNTING ###"
@@ -41,12 +44,6 @@ mount -t auto /dev/loop6 $mount_path
 ls -l /mnt/forensics
 echo ""
 echo "-----> OUTPUT: MMLS written: " $output_path"raw_image_mmls.txt"
-echo ""
-
-### ANTIVIRUS SCAN ###
-echo "### ANTI VIRUS SCAN ###"
-clamscan -ir $mount_path >> $output_path"clamscan_out.txt"
-echo "-----> OUTPUT: AV Scan Out written: " $output_path"clamscan_out.txt"
 echo ""
 
 ### COPY REGISTRY ###
@@ -75,6 +72,12 @@ strings -a -o  $mount_path"/pagefile.sys" > $output_path"pagefile_strings.txt"
 echo "-----> OUTPUT: pagefile strings written: " $output_path"pagefile_strings.txt"
 echo ""
 
+### CONVERT HIBERFIL.SYS ###
+echo "### CONVERT HIBERFIL.SYS ###"
+python $vol_bin --profile=$vol_profile -f $mount_path"/hiberfil.sys" -o $output_path"hiberfil.raw"
+echo "-----> OUTPUT: hiberfil memdump written: " $output_path"hiberfil_raw"
+echo ""
+
 ### STRINGS EXTRACTION HIBERFIL.SYS ###
 echo "### STRINGS EXTRACTION HIBERFIL.SYS ###"
 strings -a -o  $mount_path"/hiberfil.sys" > $output_path"hiberfil_strings.txt"
@@ -94,6 +97,13 @@ analyzeMFT.py -e -f $output_path"MFT.raw" -o $output_path"MFT.csv"
 echo "-----> OUTPUT: MFT written: " $output_path"MFT.raw"
 echo "-----> OUTPUT: MFT written: " $output_path"MFT.csv"
 echo ""
+
+### ANTIVIRUS SCAN ###
+echo "### ANTI VIRUS SCAN ###"
+clamscan -ir $mount_path >> $output_path"clamscan_out.txt"
+echo "-----> OUTPUT: AV Scan Out written: " $output_path"clamscan_out.txt"
+echo ""
+
 
 echo ""
 echo "##########################################################################"
