@@ -11,7 +11,7 @@ ntfs_offset=2048
 
 ### INPUT ###
 #raw_image=$1
-raw_image="/home/masterdoed/Desktop/EVIDENCES/ffwsql03/ffwsql03_clone/ffwsql03_clone-flat.vmdk"
+raw_image="/
 
 ### OUTPUT ###
 #output_path=$2
