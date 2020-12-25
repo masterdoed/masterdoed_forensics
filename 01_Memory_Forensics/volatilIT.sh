@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### AUTHOR: Matthias Doetterl
-### EMAIL: forensic_script@masterdoed.eu
+### EMAIL: masterdoed@doedspace.de
 
 ### NEEDED TOOLS: volatility
 
