@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### AUTHOR: Matthias Doetterl
-### EMAIL: forensic_script@masterdoed.eu
+### EMAIL: forensic_script@doedspace.de
 
 ### NEEDED TOOLS: md5deep, hashdeep
 
