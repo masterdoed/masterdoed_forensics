@@ -1,8 +1,7 @@
 #/bin/sh
 
 ### AUTHOR: Matthias Doetterl
-### EMAIL: forensic_script@masterdoed.eu
-
+### EMAIL: forensic_script@doedspace.de
 ### NEEDED TOOLS: regripper, auto_rip.pl
 
 #This script will extract registry information
